@@ -13,17 +13,17 @@ app.use(cors())
 app.use(express.json())
 
 app.get(`/api/${API_VERSION}/healthcheck`, (req, res) => {
-    res.json({ status: 200 })
+  res.json({ status: 200 })
 })
 
 app.get(`/api/${API_VERSION}/categories`, async (req, res) => {
-    res.json({ status: 200, categories: await getCategories() })
+  res.json({ status: 200, categories: await getCategories() })
 })
 
 app.get(`/api/${API_VERSION}/quiz`, async (req, res) => {
-    res.json({ status: 200, quiz: await getQuiz(req.query) })
+  res.json({ status: 200, quiz: await getQuiz(req.query) })
 })
 
 app.listen(port, () => {
-    console.log(`Server is up on port: ${port}`)
+  console.log(`Server is up on port: ${port}`)
 })
