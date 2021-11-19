@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import express from 'express'
 import cors from 'cors'
-import { getCategories } from './utils.js'
+import { getCategories, getQuiz } from './utils.js'
 
 dotenv.config()
 
@@ -18,6 +18,10 @@ app.get(`/api/${API_VERSION}/healthcheck`, (req, res) => {
 
 app.get(`/api/${API_VERSION}/categories`, async (req, res) => {
     res.json({ status: 200, categories: await getCategories() })
+})
+
+app.get(`/api/${API_VERSION}/quiz`, async (req, res) => {
+    res.json({ status: 200, quiz: await getQuiz(req.query) })
 })
 
 app.listen(port, () => {
